@@ -16,7 +16,7 @@
 
     overlay.innerHTML =
       '<div style="max-width:320px;width:90%;text-align:center;">' +
-      '<p style="margin-bottom:16px;font-size:16px;color:#222;">This case study is password-protected.</p>' +
+      '<p style="margin-bottom:16px;font-size:16px;color:#222;">This website is password-protected.</p>' +
       '<input id="cs-password-input" type="password" placeholder="Enter password" ' +
       'style="width:100%;padding:10px;font-size:14px;box-sizing:border-box;' +
       'border:1px solid #ccc;border-radius:4px;margin-bottom:10px;" />' +
