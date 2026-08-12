@@ -235,6 +235,18 @@ img { max-width: 100%; display: block; }
   transform: none;
 }
 
+.case-card.teaser-card {
+  background: transparent;
+  border-style: dashed;
+  text-align: center;
+  padding: 28px 36px;
+  margin-bottom: 0;
+}
+.case-card.teaser-card .tag { color: var(--ink-soft); }
+.case-card.teaser-card h3 { font-size: 20px; margin-bottom: 8px; }
+.case-card.teaser-card p:not(.read-more) { margin: 0 auto 12px; }
+.case-card.teaser-card .read-more { margin-top: 0; }
+
 /* ---------- About / footer sections ---------- */
 .about-section {
   padding: 20px 0 100px;
