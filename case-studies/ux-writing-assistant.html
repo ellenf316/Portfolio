@@ -1,0 +1,319 @@
+<title>Innovaccer AI UX Writing Assistant — Ellen Feldman</title>
+<meta name="description" content="Case study: building a custom Claude Project trained on Innovaccer's UX writing style guide, adopted by product managers, designers, and engineers to draft and review UX copy.">
+<link rel="icon" type="image/png" href="../assets/favicon.png">
+<link rel="stylesheet" href="../assets/styles.css">
+
+<nav class="site-nav">
+  <div class="wrap-wide">
+    <a href="../index.html" class="logo">Ellen Feldman</a>
+    <ul class="links">
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#work">Work</a></li>
+      <li><a href="../assets/ellen-feldman-resume.pdf" target="_blank" rel="noopener">Experience</a></li>
+      <li><a href="../index.html#speaking">Speaking</a></li>
+      <li><a href="../index.html#reviews">What People Say</a></li>
+      <li><a href="mailto:ellenf316@gmail.com">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="cs-header">
+  <div class="wrap">
+    <a href="../index.html#work" class="back-link">&larr; Back to work</a>
+    <span class="tag">AI Tooling &middot; Content Systems &middot; Prompt Engineering</span>
+    <h1>Innovaccer AI UX Writing Assistant</h1>
+    <p class="dek">Building a custom Claude Project trained on Innovaccer's UX writing style guide, so any product designer, PM, or engineer can draft and review UX copy to the same standard &mdash; without a content designer in the room.</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="cs-meta">
+    <div class="item">
+      <div class="label">Company</div>
+      <div class="value">Innovaccer</div>
+    </div>
+    <div class="item">
+      <div class="label">Tool</div>
+      <div class="value">Custom Claude Project</div>
+    </div>
+    <div class="item">
+      <div class="label">Role</div>
+      <div class="value">Lead Conversation &amp; Content Designer</div>
+    </div>
+  </div>
+</div>
+
+<main class="wrap cs-body">
+
+  <section>
+    <h2>Challenge</h2>
+    <p>I was the only content designer at Innovaccer &mdash; but product designers, PMs, and engineers across the company were all writing UX copy: button labels, error messages, empty states, AI-agent dialogue. Without a scalable way to apply our style guide consistently, copy quality varied screen to screen, and inconsistencies piled up across files that I alone had no way to catch in time.</p>
+    <p>I built a custom Claude Project &mdash; a UX writing assistant trained on our style guide &mdash; so anyone on the team could draft or review copy against the same standard I'd apply myself, without waiting on content design to be available.</p>
+  </section>
+
+  <section>
+    <h2>Building the Foundation: The Style Guide</h2>
+    <p>Before the assistant could enforce anything, the standard itself had to exist in a form a model &mdash; and a human &mdash; could actually apply. I wrote a UX writing style guide covering Innovaccer's house style, accessibility and localization requirements, voice and tone (including a dedicated persona layer for Sara, our AI medical-receptionist agent), and a library of content patterns by UI element, each with concrete right and wrong examples:</p>
+
+    <div class="example-card">
+      <h4>Buttons</h4>
+      <div class="example-item is-good"><span class="mark">&#10003;</span><span class="example-text">Save draft &middot; View details &middot; Download report &middot; Finish intake</span></div>
+      <div class="example-item is-bad"><span class="mark">&#10005;</span><span class="example-text">Click This Button to Proceed to the Next Step &middot; Submit &middot; Done &middot; Go</span></div>
+    </div>
+
+    <div class="example-card">
+      <h4>Confirmation Messages</h4>
+      <div class="example-item is-good"><span class="mark">&#10003;</span><span class="example-text">Your request has been sent. &middot; Medication order submitted. View summary or place another order.</span></div>
+      <div class="example-item is-bad"><span class="mark">&#10005;</span><span class="example-text">Success! &middot; Done. &middot; You did it! &middot; Yay! All finished.</span></div>
+    </div>
+
+    <div class="example-card">
+      <h4>AI Buttons</h4>
+      <div class="example-item is-good"><span class="mark">&#10003;</span><span class="example-text">Summarize notes &middot; Suggest diagnosis &middot; Draft response with AI &middot; Analyze vitals</span></div>
+      <div class="example-item is-bad"><span class="mark">&#10005;</span><span class="example-text">Let AI Write &middot; Diagnose patient &middot; Start AI &middot; Answer for me</span></div>
+    </div>
+
+    <p>That last category matters more than it looks: the guide is explicit that AI buttons should never imply the AI is making a final decision &mdash; "Suggest diagnosis," never "Diagnose patient." Positioning AI as a helpful assistant rather than an authority runs through the whole guide, not just the AI-specific sections.</p>
+  </section>
+
+  <section>
+    <h2>The Assistant Itself</h2>
+    <p>The style guide became project knowledge; the instructions turn it into an active reviewer. The project's system prompt tells Claude exactly what to check for, how to cite the guide when flagging a violation, when to switch into Sara's persona voice versus general UI copy, and &mdash; critically &mdash; to track consistency <em>across</em> files, not just within a single screen.</p>
+
+    <div class="instructions-card">
+      <div class="instructions-label">Project Instructions</div>
+      <p>You are a UX writing assistant for Innovaccer, a healthcare technology company. Your job is to help product designers, writers, and PMs draft and review UX copy so it's consistent with Innovaccer's UX Writing Style Guide (attached as project knowledge).</p>
+      <p>Most of what you'll review is plain UI copy &mdash; buttons, headings, error messages, empty states, toasts, tooltips, form labels, etc. A smaller portion is copy spoken as Sara, our AI medical-receptionist agent, which follows an additional persona layer on top of the base style rules. Don't assume every request involves Sara &mdash; default to general UI copy unless the user says otherwise or the context makes clear it's an AI-agent-facing message.</p>
+
+      <h4>Core responsibilities</h4>
+      <ol>
+        <li>Draft new UX copy when given a description of the screen, user goal, or context &mdash; or a Figma file/frame to reference directly.</li>
+        <li>Review and edit existing copy, flagging anything that violates the style guide and explaining why, citing the specific rule.</li>
+        <li>When working from Figma, reference the actual frame/screen content rather than guessing.</li>
+        <li>Track copy consistency across files &mdash; flag inconsistent terminology or patterns between screens (e.g., one says "ER," another says "ED") even if no single instance violates the guide on its own.</li>
+        <li>Write copy for Sara specifically when the request calls for it, following her voice and tone guidelines.</li>
+      </ol>
+
+      <h4>When reviewing copy</h4>
+      <ul>
+        <li>Point out specific violations with the relevant guide section.</li>
+        <li>Suggest 1&ndash;2 alternative options, not just one, when there's room for voice/tone judgment.</li>
+        <li>If copy breaks a pattern but arguably serves the user better, say so rather than forcing a rigid fix.</li>
+        <li>When reviewing across multiple files, call out cross-file inconsistencies as their own category of feedback.</li>
+      </ul>
+    </div>
+
+    <div class="mockup-pair">
+      <div class="mockup-slot">
+        <p class="mockup-slot-label">Project Home</p>
+        <div class="screenshot-frame lightbox-trigger">
+          <img src="../assets/ux-writing-assistant/project-home.png" alt="Innovaccer AI UX Writing Assistant Claude Project home screen, showing the project description, an empty chat input, recent conversations, and attached style guide files.">
+        </div>
+      </div>
+      <div class="mockup-slot">
+        <p class="mockup-slot-label">Project Instructions, Live</p>
+        <div class="screenshot-frame lightbox-trigger">
+          <img src="../assets/ux-writing-assistant/project-instructions-modal.png" alt="Set project instructions modal in Claude, showing the actual system prompt configured for the Innovaccer AI UX Writing Assistant.">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Seeing It Work: A Quick Fix</h2>
+    <p>A teammate pasted a screenshot of an existing password error message and asked for a rewrite. The assistant didn't just reword it &mdash; it flagged why the current version violated the guide, cross-referenced an existing error-message pattern library to keep the fix consistent with other errors already shipped, and offered a second, slightly more explicit alternative.</p>
+
+    <div class="screenshot-frame is-narrow lightbox-trigger">
+      <img src="../assets/ux-writing-assistant/password-error-before.png" alt="Original password error message reading 'Your password is incorrect. You've got only 4 attempts left. Try again or just click on Forgot password to reset it.'">
+    </div>
+
+    <div class="chat-transcript" style="margin-top: 20px;">
+      <p class="chat-title">Prompt: [pasted screenshot above] &mdash; "rewrite this"</p>
+      <div class="instructions-card" style="margin: 0;">
+        <h4>Issues vs. style guide</h4>
+        <ul>
+          <li>"You've got" &mdash; contraction reads casual/colloquial; guide favors plain, direct phrasing over idiom-adjacent language.</li>
+          <li>"just click on 'Forgot password'" &mdash; "click on" is directional/informal language the guide flags (avoid "click here" type phrasing); "just" is filler.</li>
+          <li>This also has an existing pattern in the Error Messages sheet ("Incorrect password / 4 attempts left. Try again. / Forgot password?") that this version doesn't match &mdash; worth aligning for consistency.</li>
+        </ul>
+        <h4>Rewrite (matches existing pattern)</h4>
+        <p style="color: var(--ink); font-style: normal;">&#9888; Incorrect password<br>4 attempts left. Try again.<br>[Forgot password?]</p>
+        <h4>Alternative (slightly more explicit)</h4>
+        <p style="color: var(--ink); font-style: normal;">&#9888; Your password is incorrect<br>You have 4 attempts left. Try again, or reset your password.<br>[Forgot password?]</p>
+        <p style="margin-bottom: 0;">Either works &mdash; first option matches your documented pattern exactly, so I'd default to that for consistency unless there's a reason this screen needs more context.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Seeing It Work: A Full Screen Audit</h2>
+    <p>To stress-test the assistant on something bigger than a single string, I built Careflow &mdash; a mockup care-gap workflow tool &mdash; deliberately seeded with the kinds of copy issues that creep into real products: title-case headings, vague buttons, missing field labels, generic error text. I dropped all four screens into the assistant with a single prompt: "here you go." It thought for 40 seconds and returned a full audit, screen by screen, plus a cross-screen consistency section catching patterns no single-screen review would surface.</p>
+
+    <div class="screenshot-frame lightbox-trigger">
+      <img src="../assets/ux-writing-assistant/chat-audit-request.png" alt="Chat message showing all four Careflow screens attached with the prompt 'here you go,' and the assistant's response beginning 'Here's the full audit across all four screens, organized by screen with cross-screen issues at the end.'">
+    </div>
+
+    <h3>Screen 1 &mdash; Care Gap Worklist</h3>
+    <div class="screenshot-frame lightbox-trigger">
+      <img src="../assets/ux-writing-assistant/careflow-screen-1-worklist.png" alt="Careflow Care Gap Worklist screen with a patient table, filters, and Initiate action buttons.">
+    </div>
+    <div class="matrix-frame">
+      <div class="matrix-scroll">
+        <table class="matrix-table">
+          <thead><tr><th>Element</th><th>Issue</th><th>Fix</th></tr></thead>
+          <tbody>
+            <tr><td>"Care Gap Worklist" (page title)</td><td>Title case &mdash; guide requires sentence case.</td><td>"Care gap worklist"</td></tr>
+            <tr><td>"Select Criteria" / "Date Range"</td><td>Title case.</td><td>"Select criteria" / "Date range"</td></tr>
+            <tr><td>"All Gap Types" / "Last 30 Days"</td><td>Title case.</td><td>"All gap types" / "Last 30 days"</td></tr>
+            <tr><td>"PT INFO" / "ACTION REQ'D"</td><td>Unclear, non-standard abbreviations.</td><td>"Patient" / "Action needed"</td></tr>
+            <tr><td>"Initiate" (row button)</td><td>Vague CTA &mdash; doesn't describe what happens next.</td><td>"Start outreach" or a gap-specific verb, e.g. "Schedule mammogram"</td></tr>
+            <tr><td>"No Data" (empty state)</td><td>Doesn't explain why it's empty or offer a next step.</td><td>"No high-risk patients match this filter."</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <h3>Screen 2 &mdash; Patient Care Plan Detail</h3>
+    <div class="screenshot-frame lightbox-trigger">
+      <img src="../assets/ux-writing-assistant/careflow-screen-2-careplan.png" alt="Careflow Patient Care Plan Detail screen with an Update Care Plan form showing two unlabeled 'Enter Value' fields and a generic error message.">
+    </div>
+    <div class="matrix-frame">
+      <div class="matrix-scroll">
+        <table class="matrix-table">
+          <thead><tr><th>Element</th><th>Issue</th><th>Fix</th></tr></thead>
+          <tbody>
+            <tr><td>"Care Plan" / "Active Care Plan" / "Update Care Plan"</td><td>Title case.</td><td>"Care plan" / "Active care plan" / "Update care plan"</td></tr>
+            <tr><td>"Enter Value" (used twice)</td><td>Two different fields share one generic label &mdash; fails the field-label rule and breaks screen-reader users' ability to distinguish fields.</td><td>"HbA1c value" for the first field; "Retest date" for the second</td></tr>
+            <tr><td>"mm/dd/yyyy" placeholder with no visible label</td><td>Guide: don't rely on placeholder text as the only label.</td><td>Add a visible label ("Retest date"); keep mm/dd/yyyy as format hint</td></tr>
+            <tr><td>"Error: Invalid Input. Please Try Again."</td><td>"Error:" and "Please" are extraneous words the guide flags; title case; vague.</td><td>"Enter a valid date in mm/dd/yyyy format."</td></tr>
+            <tr><td>"Submit" button</td><td>Vague CTA &mdash; the guide's literal bad example.</td><td>"Save care plan" or "Update care plan"</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <h3>Screen 3 &mdash; Assign Task Modal</h3>
+    <div class="screenshot-frame is-narrow lightbox-trigger">
+      <img src="../assets/ux-writing-assistant/careflow-screen-3-assign.png" alt="Careflow Assign Task modal with an unlabeled 'Choose One' dropdown, an unlabeled Comments field, and Cancel/Go buttons, with a generic 'Success!' toast in the background.">
+    </div>
+    <div class="matrix-frame">
+      <div class="matrix-scroll">
+        <table class="matrix-table">
+          <thead><tr><th>Element</th><th>Issue</th><th>Fix</th></tr></thead>
+          <tbody>
+            <tr><td>"Success!" (toast)</td><td>Vague &mdash; the guide's literal bad example. Toasts should confirm the specific result.</td><td>"Task assigned." or "Task assigned to [name]."</td></tr>
+            <tr><td>"Assign" (modal title)</td><td>Ambiguous on its own &mdash; assign what?</td><td>"Assign task"</td></tr>
+            <tr><td>"Choose One" (dropdown)</td><td>Vague placeholder with no visible label above it.</td><td>Add label "Assign to"; change placeholder to "Select a team member"</td></tr>
+            <tr><td>"Comments" field</td><td>No visible label, placeholder-only.</td><td>Add label "Comments (optional)" above the field</td></tr>
+            <tr><td>"Go" button</td><td>Vague CTA, doesn't describe the action.</td><td>"Assign"</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <h3>Screen 4 &mdash; Notifications Panel</h3>
+    <div class="screenshot-frame is-narrow lightbox-trigger">
+      <img src="../assets/ux-writing-assistant/careflow-screen-4-notifications.png" alt="Careflow Notifications panel titled 'You Have Notifications' with a 'Mark All' link and list items including a bare 'Overdue' and bare 'New comment' with no context.">
+    </div>
+    <div class="matrix-frame">
+      <div class="matrix-scroll">
+        <table class="matrix-table">
+          <thead><tr><th>Element</th><th>Issue</th><th>Fix</th></tr></thead>
+          <tbody>
+            <tr><td>"You Have Notifications" (heading)</td><td>Wordy and title case.</td><td>"Notifications"</td></tr>
+            <tr><td>"Mark All"</td><td>Incomplete &mdash; mark all what?</td><td>"Mark all as read"</td></tr>
+            <tr><td>"Overdue" (list item)</td><td>Too vague on its own &mdash; doesn't say what's overdue or for whom.</td><td>"Care gap overdue: J. Martinez"</td></tr>
+            <tr><td>"New comment" (list item)</td><td>Same issue &mdash; no context for which item.</td><td>"New comment on Task #4471"</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="callout-box" style="margin-top: 28px;">
+      <div class="label">Cross-Screen Consistency</div>
+      <p>These issues span multiple screens and should be fixed as shared patterns, not one-off edits per screen:</p>
+      <ul style="margin: 0 0 12px 20px;">
+        <li><strong>Heading case is inconsistent everywhere, not just per screen</strong> &mdash; "Care Gap Worklist," "Active Care Plan," and "You Have Notifications" all use title case. Standardize to sentence case app-wide.</li>
+        <li><strong>Primary action buttons use three different, all-vague verbs</strong> for essentially "confirm/start" actions: "Initiate," "Submit," "Go." Converge on a shared, specific action + object pattern.</li>
+        <li><strong>Label pattern is missing app-wide, not just once</strong> &mdash; both the Care Plan form and the Assign modal rely on placeholder text with no real field label.</li>
+        <li><strong>"MRN," "DOB," and "PCP"</strong> are standard clinical shorthand appropriate for this clinician-facing tool &mdash; no change needed.</li>
+      </ul>
+      <p style="margin-bottom: 0; font-style: italic;">"Want me to put together a clean before/after reference doc (Word or Markdown) with all these fixes for handoff to the design team?"</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Iterating With the Team</h2>
+    <p>The assistant didn't ship once and stay static. Once product managers, designers, and engineers started using it directly, they came back with feedback &mdash; places where it was too rigid, guide sections that needed clarifying, edge cases the instructions didn't cover. I kept updating the project's instructions and the underlying style guide as that feedback came in, so the assistant got more accurate the more the team actually used it.</p>
+  </section>
+
+  <section>
+    <h2>Results</h2>
+    <div class="outcome-grid">
+      <div class="outcome-item"><p><strong>Heavily adopted across teams.</strong> Product managers, product designers, and engineers at Innovaccer use the assistant directly &mdash; not just people with content design backgrounds.</p></div>
+      <div class="outcome-item"><p><strong>Minutes, not a queue.</strong> A full four-screen audit that would otherwise wait on content design's availability came back in under a minute, catching both single-screen and cross-screen issues.</p></div>
+      <div class="outcome-item"><p><strong>Consistency at scale.</strong> Cross-file pattern-matching (inconsistent CTA verbs, mismatched terminology) catches issues a single-screen review would miss entirely.</p></div>
+      <div class="outcome-item"><p><strong>Handoff-ready by default.</strong> The assistant can turn its own audit into a clean before/after reference doc, ready to hand to a design team without extra formatting work.</p></div>
+    </div>
+  </section>
+
+</main>
+
+<div class="wrap">
+  <div class="cs-footer-nav">
+    <a href="../index.html#work">&larr; Back to all work</a>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var overlay = document.getElementById('lightboxOverlay') || (function () {
+      var d = document.createElement('div');
+      d.className = 'lightbox-overlay';
+      d.id = 'lightboxOverlay';
+      d.innerHTML = '<button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button><img id="lightboxImg" class="is-fit" src="" alt=""><div class="lightbox-hint">Click image to zoom in &middot; scroll to pan &middot; click again to zoom out</div>';
+      document.body.appendChild(d);
+      return d;
+    })();
+    var overlayImg = document.getElementById('lightboxImg');
+    var closeBtn = document.getElementById('lightboxClose');
+
+    function openLightbox(src, alt) {
+      overlayImg.src = src;
+      overlayImg.alt = alt || '';
+      overlayImg.classList.remove('is-full');
+      overlayImg.classList.add('is-fit');
+      overlay.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      overlay.classList.remove('is-open');
+      overlayImg.src = '';
+      document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('.lightbox-trigger').forEach(function (trigger) {
+      trigger.addEventListener('click', function () {
+        var img = trigger.querySelector('img');
+        if (img) openLightbox(img.src, img.alt);
+      });
+    });
+
+    overlayImg.addEventListener('click', function (e) {
+      e.stopPropagation();
+      overlayImg.classList.toggle('is-fit');
+      overlayImg.classList.toggle('is-full');
+    });
+
+    overlay.addEventListener('click', closeLightbox);
+    closeBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      closeLightbox();
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && overlay.classList.contains('is-open')) closeLightbox();
+    });
+  })();
+</script>

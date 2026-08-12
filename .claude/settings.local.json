@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pdftotext -layout \"/Users/ellenfeldman/Downloads/196 EVENTS CASE STUDY.pdf\" -)",
+      "Bash(python3 -c ' *)",
+      "Bash(pip3 list *)",
+      "Bash(python3 -c \"print\\('hello'\\)\")",
+      "Bash(pip3 install *)",
+      "Bash(/bin/pwd)"
+    ]
+  }
+}
