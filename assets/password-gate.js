@@ -1,5 +1,5 @@
 (function () {
-  var PASSWORD = "writingisengineering";
+  var PASSWORD = "wordsaretheinterface";
   var SESSION_KEY = "case-studies-unlocked";
 
   if (sessionStorage.getItem(SESSION_KEY) === "true") {
