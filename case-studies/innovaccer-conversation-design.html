@@ -54,12 +54,20 @@
   </section>
 
   <section>
+    <h2>Challenge</h2>
+    <p>Innovaccer wanted to improve administrative efficiency in healthcare for its clients with an AI agent, and this particular pathway was set to be demoed live at Xccelerate, Innovaccer's annual customer conference &mdash; on a fast turnaround.</p>
+    <p>I was brand new to the company, so I was learning Bland (the voice AI platform), AI-prompted conversation design, and Innovaccer's product all at the same time, working closely with the lead engineer to get it built in time. Bland itself had a lot of bugs, and its AI voice didn't match Sara's persona &mdash; it sounded bored and too casual next to the warm, professional character we'd defined.</p>
+    <p>The biggest challenge, though, was working in a regulated industry with a model that can't be fully scripted. Unlike an IVR, you can't guarantee exactly what an AI agent will say in the moment, which made it much harder to prevent mistakes ahead of time &mdash; a real risk in healthcare, where the wrong word carries more weight than it would on a typical customer service call.</p>
+  </section>
+
+  <section>
     <h2>Team</h2>
     <p>The people I worked with directly:</p>
     <ul>
       <li>UX Design Director</li>
       <li>Senior Manager, Product Design</li>
       <li>Product Managers</li>
+      <li>UX Researcher</li>
       <li>Lead Engineer</li>
       <li>Bland (external voice AI platform vendor)</li>
       <li>SME: Nurse</li>
@@ -195,6 +203,8 @@
       </div>
     </div>
 
+    <p>One real example of finding that balance: early on, I added a lot of "thank you"s and "I'm sorry to hear that"s so Sara would acknowledge what the patient had just said instead of moving straight to the next node. It worked, but it also tipped Sara into maudlin territory &mdash; over-apologetic, over-thanking, more like a scripted customer-service line than a person. I dialed it back and revised the tone of voice and persona guidelines to land on a happier medium: acknowledging what the patient said without gushing about it.</p>
+
     <p>Vocabulary shifts depending on who Sara is talking to: laymen's terms with patients, more clinical language with care managers, doctors, and other medical staff &mdash; unless the patient uses the clinical term first.</p>
 
     <table class="vocab-table">
@@ -228,7 +238,7 @@
 
   <section>
     <h2>Conversation Pathways</h2>
-    <p>An engineer had built a first working draft of the pathway to prove out the technical pieces &mdash; webhooks, variables, call flow &mdash; before conversation design touched it. I rebuilt it in Bland: the full branching logic Sara follows on an appointment-setting call. Click either panel to zoom in and compare the two pathways:</p>
+    <p>A UX designer had already mapped a user journey in Figma before any of this started. An engineer used it to build a first working draft of the pathway, to prove out the technical pieces &mdash; webhooks, variables, call flow &mdash; before conversation design touched it. I rebuilt it in Bland: the full branching logic Sara follows on an appointment-setting call. Click either panel to zoom in and compare the two pathways:</p>
 
     <div class="mockup-pair" style="margin-bottom: 8px;">
       <div class="mockup-slot is-before">
@@ -345,6 +355,11 @@
   </section>
 
   <section>
+    <h2>Testing</h2>
+    <p>Before the Xccelerate demo, I tested the pathway extensively myself and with other Innovaccer employees, including our UX researcher, running the call repeatedly to catch the kinds of issues an AI-based agent can introduce that a scripted flow wouldn't &mdash; and to make sure the persona, tone, and pathway logic held up call to call, not just on paper.</p>
+  </section>
+
+  <section>
     <h2>Hearing It In Action</h2>
     <p>A recorded test call with Sara, walking through the appointment-setting flow end to end &mdash; identity verification, consent, scheduling, and wrap-up. Lightly processed from the raw capture: noise reduction to cut down on background sound, and volume leveling so both voices sit at a more even level throughout.</p>
 
@@ -359,6 +374,17 @@
       <audio controls preload="metadata" src="../assets/innovaccer-pathways/sara-call-recording.mp3"></audio>
       <p class="audio-note">Audio processed for clarity (noise reduction and volume leveling); content unedited.</p>
     </div>
+  </section>
+
+  <section>
+    <h2>Outcome</h2>
+    <p>Client feedback after the Xccelerate demo was that the agent wasn't quite there yet. Bland's guidance was that agents perform best with fewer, more flexible nodes rather than many rigid ones, so I revised the pathway down to about two nodes total.</p>
+    <p>Innovaccer went on to sign one client, and we continued building pathways for them. This pathway became the blueprint for the pathways and reusable nodes built after it, so different pathways stayed consistent with each other instead of each being built from scratch. I was also asked to help other engineers with conversational quality and pathway-building on additional pathways beyond this one. We continued working with Bland to refine the voice and cadence, aiming for something more conversational and realistic-sounding.</p>
+  </section>
+
+  <section>
+    <h2>Reflection</h2>
+    <p>This project was as much about learning a new tool and a new kind of conversation design under real time pressure as it was about the pathway itself. The biggest shift was accepting that an AI-based agent can't be fully scripted the way an IVR can &mdash; the real work was building guardrails and fallbacks for what a strict script couldn't handle, then iterating with real feedback instead of expecting the first version to be finished at launch.</p>
   </section>
 
 </main>
