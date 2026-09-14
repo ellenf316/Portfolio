@@ -49,7 +49,7 @@
 
   <section>
     <div class="persona-progress-note">
-      <strong>This case study covers the full project:</strong> persona, tone of voice, conversation pathways, and a recorded sample call with Sara.
+      <strong>This case study covers the full project:</strong> persona, tone of voice, conversation pathways, and a recorded sample call with Sara. Sara is a multimodal agent &mdash; voice, SMS, and chat &mdash; and this case study focuses specifically on the voice channel.
     </div>
   </section>
 
@@ -228,7 +228,7 @@
 
   <section>
     <h2>Conversation Pathways</h2>
-    <p>An engineer had built a first working draft of the pathway to prove out the technical pieces &mdash; webhooks, variables, call flow &mdash; before conversation design touched it. I rebuilt it in Bland: the full branching logic Sara follows on an appointment-confirmation call.</p>
+    <p>An engineer had built a first working draft of the pathway to prove out the technical pieces &mdash; webhooks, variables, call flow &mdash; before conversation design touched it. I rebuilt it in Bland: the full branching logic Sara follows on an appointment-setting call. Click either panel to zoom in and compare the two pathways:</p>
 
     <div class="mockup-pair" style="margin-bottom: 8px;">
       <div class="mockup-slot is-before">
@@ -247,7 +247,7 @@
 
     <p>The structural differences matter more than the visual ones:</p>
     <ul>
-      <li><strong>Sara now confirms she's talking to the right person before doing anything else.</strong> The draft assumed whoever answered the phone was the patient, going straight into asking for consent with no path for "wrong person answered the phone" or "this isn't a good time." I rewrote the opening as a more natural, conversational greeting that can catch either case and adapt &mdash; asking for a better time to call, or re-introducing Sara to the correct person &mdash; before consent is ever requested.</li>
+      <li><strong>Identity verification became the first step.</strong> The draft assumed whoever answered the phone was the patient, going straight into asking for consent with no path for "wrong person answered the phone" or "this isn't a good time." I rewrote the opening as a more natural, conversational greeting that can catch either case and adapt &mdash; asking for a better time to call, or re-introducing Sara to the correct person &mdash; before consent is ever requested.</li>
       <li><strong>One fallback became nine.</strong> The draft handled every edge case &mdash; a confused patient, a medical emergency, a request for a human agent &mdash; with a single global node: "Sorry but I'll have to hang up now." The final pathway replaces that with nine differentiated fallbacks, each with its own trigger condition and dialogue, including dedicated handling for medical emergencies and abuse that didn't exist in the draft at all.</li>
       <li><strong>Rigid matching became graceful fallback.</strong> The draft confirmed identity with exact-match variable conditions (<code>full_name equals {{pati&hellip;}}</code>, <code>dob equals {{patient_do&hellip;}}</code>) and no visible recovery path if it failed. The final version adds an explicit "Unable to confirm" branch that hands off to a human agent instead of leaving the patient stuck.</li>
       <li><strong>The happy path got longer, on purpose.</strong> The draft ended the call right after booking. The final version adds accessibility questions, insurance verification, co-pay details, and an appointment reminder before signing off &mdash; the parts of the call that make the appointment actually usable, not just booked.</li>
@@ -346,13 +346,13 @@
 
   <section>
     <h2>Hearing It In Action</h2>
-    <p>A recorded test call with Sara, walking through the appointment-confirmation flow end to end &mdash; identity verification, consent, scheduling, and wrap-up. Lightly processed from the raw capture: noise reduction to cut down on background sound, and volume leveling so both voices sit at a more even level throughout.</p>
+    <p>A recorded test call with Sara, walking through the appointment-setting flow end to end &mdash; identity verification, consent, scheduling, and wrap-up. Lightly processed from the raw capture: noise reduction to cut down on background sound, and volume leveling so both voices sit at a more even level throughout.</p>
 
     <div class="audio-player-card">
       <div class="audio-player-head">
         <span class="audio-player-icon">&#9835;</span>
         <div>
-          <p class="audio-title">Sara &mdash; Appointment Scheduling Call</p>
+          <p class="audio-title">Sara &mdash; Appointment Setting Call</p>
           <p class="audio-meta">Recorded test call &middot; 3:37</p>
         </div>
       </div>
