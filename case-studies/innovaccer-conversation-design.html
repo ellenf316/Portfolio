@@ -290,7 +290,7 @@
     <div class="chat-transcript">
       <p class="chat-title">Node: Ask for a Better Time to Call</p>
       <div class="chat-line agent"><div class="chat-bubble"><span class="chat-speaker">Sara</span>I'm calling at a bad time. Is there a better time I can reach [patient name] today or this week?</div></div>
-      <div class="chat-line user"><div class="chat-bubble">How about tomorrow afternoon?</div></div>
+      <div class="chat-line user"><div class="chat-bubble"><span class="chat-speaker">User</span>How about tomorrow afternoon?</div></div>
       <div class="chat-line agent"><div class="chat-bubble"><span class="chat-speaker">Sara</span>Tomorrow afternoon works for me. I'll make sure to call then.</div></div>
     </div>
 
@@ -307,14 +307,14 @@
     <div class="chat-transcript">
       <p class="chat-title">Node: Insurance Info</p>
       <div class="chat-line agent"><div class="chat-bubble"><span class="chat-speaker">Sara</span>Hi! To verify your insurance, could you please share the name of your insurance provider with me?</div></div>
-      <div class="chat-line user"><div class="chat-bubble">[Provides insurer's name and policy number]</div></div>
+      <div class="chat-line user"><div class="chat-bubble"><span class="chat-speaker">User</span>[Provides insurer's name and policy number]</div></div>
       <div class="chat-line agent"><div class="chat-bubble"><span class="chat-speaker">Sara</span>Got it! Would you like to know how much your co-pay will be for this service?</div></div>
     </div>
   </section>
 
   <section>
     <h2>Designing for the Edge Cases</h2>
-    <p>A phone call doesn't stay on the happy path just because the pathway diagram does. Alongside the main flow, I designed a set of global fallback nodes &mdash; reachable from anywhere in the conversation &mdash; for the moments a scripted flow can't anticipate:</p>
+    <p>Alongside the main flow, I designed a set of global fallback nodes &mdash; reachable from anywhere in the conversation &mdash; for the moments a scripted flow can't anticipate:</p>
 
     <div class="edge-case-grid">
       <div class="ec-item">
