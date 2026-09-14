@@ -55,9 +55,11 @@
 
   <section>
     <h2>Team</h2>
-    <p>A small, cross-functional team:</p>
+    <p>The people I worked with directly:</p>
     <ul>
       <li>UX Design Director</li>
+      <li>Senior Manager, Product Design</li>
+      <li>Product Managers</li>
       <li>Lead Engineer</li>
       <li>Bland (external voice AI platform vendor)</li>
       <li>SME: Nurse</li>
@@ -75,7 +77,7 @@
         <div class="persona-block">
           <span class="persona-archetype">Empathetic Advocate</span>
           <p style="font-family: var(--serif); font-size: 22px; margin-bottom: 12px;">Sara, AI Medical Receptionist</p>
-          <p>Sara is an AI medical receptionist created to make navigating healthcare more seamless and efficient. She helps make appointments and follow-up calls after hospitalizations and procedures.</p>
+          <p>Sara is an AI medical receptionist created to make navigating healthcare more seamless and efficient. She helps patients set up appointments &mdash; including referral appointments, like scheduling with a cardiologist after a primary care doctor's referral &mdash; and follow-up calls after hospitalizations and procedures.</p>
         </div>
 
         <div class="persona-block">
@@ -105,6 +107,7 @@
             <span>Callous</span>
             <span>Apathetic</span>
             <span>Inflexible</span>
+            <span>Maudlin</span>
           </div>
         </div>
       </div>
@@ -117,7 +120,7 @@
             <div class="slider-track"><span class="slider-dot" style="left: 90%;"></span></div>
           </div>
           <div class="slider-row">
-            <div class="slider-labels"><span>Personable/Friendly</span><span>Corporate/Professional</span></div>
+            <div class="slider-labels"><span>Personable/Friendly</span><span>Corporate</span></div>
             <div class="slider-track"><span class="slider-dot" style="left: 30%;"></span></div>
           </div>
           <div class="slider-row">
@@ -229,7 +232,7 @@
 
   <section>
     <h2>Conversation Pathways</h2>
-    <p>An engineer had built a first working draft of the pathway to prove out the technical pieces &mdash; webhooks, variables, call flow &mdash; before conversation design touched it. With the persona and voice guidelines set, I rebuilt it: the full branching logic Sara follows on an appointment-confirmation call, in a Voiceflow-style pathway builder. Every box is a decision point &mdash; what Sara says, what she's listening for, and where the conversation goes next depending on how the patient responds.</p>
+    <p>An engineer had built a first working draft of the pathway to prove out the technical pieces &mdash; webhooks, variables, call flow &mdash; before conversation design touched it. With the persona and voice guidelines set, I rebuilt it in Bland: the full branching logic Sara follows on an appointment-confirmation call.</p>
 
     <div class="mockup-pair" style="margin-bottom: 8px;">
       <div class="mockup-slot is-before">
@@ -248,8 +251,8 @@
 
     <p>The structural differences matter more than the visual ones:</p>
     <ul>
+      <li><strong>Sara now confirms she's talking to the right person before doing anything else.</strong> The draft assumed whoever answered the phone was the patient, going straight into asking for consent with no path for "wrong person answered the phone" or "this isn't a good time." I rewrote the opening as a more natural, conversational greeting that can catch either case and adapt &mdash; asking for a better time to call, or re-introducing Sara to the correct person &mdash; before consent is ever requested.</li>
       <li><strong>One fallback became nine.</strong> The draft handled every edge case &mdash; a confused patient, a medical emergency, a request for a human agent &mdash; with a single global node: "Sorry but I'll have to hang up now." The final pathway replaces that with nine differentiated fallbacks, each with its own trigger condition and dialogue, including dedicated handling for medical emergencies and abuse that didn't exist in the draft at all.</li>
-      <li><strong>Identity verification became a safety net, not a gate.</strong> The draft went straight from Start into asking for consent, with no path for "wrong person answered the phone" or "this isn't a good time." The final version adds a branch for each &mdash; asking for a better time to call, re-introducing Sara to the correct person &mdash; before consent is ever requested.</li>
       <li><strong>Rigid matching became graceful fallback.</strong> The draft confirmed identity with exact-match variable conditions (<code>full_name equals {{pati&hellip;}}</code>, <code>dob equals {{patient_do&hellip;}}</code>) and no visible recovery path if it failed. The final version adds an explicit "Unable to confirm" branch that hands off to a human agent instead of leaving the patient stuck.</li>
       <li><strong>The happy path got longer, on purpose.</strong> The draft ended the call right after booking. The final version adds accessibility questions, insurance verification, co-pay details, and an appointment reminder before signing off &mdash; the parts of the call that make the appointment actually usable, not just booked.</li>
     </ul>
