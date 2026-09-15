@@ -24,7 +24,7 @@
     <a href="../index.html#work" class="back-link">&larr; Back to work</a>
     <span class="tag">AI Tooling &middot; Content Systems &middot; Prompt Engineering</span>
     <h1>Innovaccer AI UX Writing Assistant</h1>
-    <p class="dek">Building a custom Claude Project trained on Innovaccer's UX writing style guide, so any product designer, PM, or engineer can draft and review UX copy to the same standard &mdash; without a content designer in the room.</p>
+    <p class="dek">Built a custom Claude Project trained on Innovaccer's UX writing style guide, so any product designer, PM, or engineer could draft and review UX copy to the same standard just by sharing a Figma file &mdash; without a content designer in the room.</p>
   </div>
 </header>
 
@@ -49,13 +49,14 @@
 
   <section>
     <h2>Challenge</h2>
-    <p>I was the only content designer at Innovaccer &mdash; but product designers, PMs, and engineers across the company were all writing UX copy: button labels, error messages, empty states, AI-agent dialogue. Without a scalable way to apply our style guide consistently, copy quality varied screen to screen, and inconsistencies piled up across files that I alone had no way to catch in time.</p>
-    <p>I built a custom Claude Project &mdash; a UX writing assistant trained on our style guide &mdash; so anyone on the team could draft or review copy against the same standard I'd apply myself, without waiting on content design to be available.</p>
+    <p>As the only content designer at Innovaccer, product designers, product managers, and even engineers often wrote UX copy without including me due to capacity. Without a scalable way to apply our style guide consistently, copy quality varied screen to screen, and inconsistencies piled up across products.</p>
+    <p>Part of that was structural: I was one of the only remote employees on a design team split between India and San Francisco, with no standing team UX meeting, so a lot of designers didn't even know I existed, let alone that there was a style guide.</p>
+    <p>I built a custom Claude Project &mdash; a UX writing assistant trained on the style guide I wrote &mdash; so anyone on the team could draft or review copy against the same standards.</p>
   </section>
 
   <section>
     <h2>Building the Foundation: The Style Guide</h2>
-    <p>Before the assistant could enforce anything, the standard itself had to exist in a form a model &mdash; and a human &mdash; could actually apply. I wrote a UX writing style guide covering Innovaccer's house style, accessibility and localization requirements, voice and tone (including a dedicated persona layer for Sara, our AI medical-receptionist agent), and a library of content patterns by UI element, each with concrete right and wrong examples:</p>
+    <p>Before giving the assistant instructions, we needed to create standards to ensure UX copy consistency across products. I wrote a UX writing style guide covering Innovaccer's house style, accessibility and localization requirements, voice and tone (including a dedicated persona layer for Sara, our AI medical-receptionist agent), and a library of content patterns by UI element, each with concrete right and wrong examples. Here are just a few pulled from the guide:</p>
 
     <div class="example-card">
       <h4>Buttons</h4>
@@ -75,12 +76,13 @@
       <div class="example-item is-bad"><span class="mark">&#10005;</span><span class="example-text">Let AI Write &middot; Diagnose patient &middot; Start AI &middot; Answer for me</span></div>
     </div>
 
-    <p>That last category matters more than it looks: the guide is explicit that AI buttons should never imply the AI is making a final decision &mdash; "Suggest diagnosis," never "Diagnose patient." Positioning AI as a helpful assistant rather than an authority runs through the whole guide, not just the AI-specific sections.</p>
+    <p>That last category matters because the guide is explicit that AI buttons should never imply the AI is making a final decision &mdash; "Suggest diagnosis," never "Diagnose patient." Positioning AI as a helpful assistant rather than an authority runs through the whole guide, not just the AI-specific sections.</p>
   </section>
 
   <section>
-    <h2>The Assistant Itself</h2>
-    <p>The style guide became project knowledge; the instructions turn it into an active reviewer. The project's system prompt tells Claude exactly what to check for, how to cite the guide when flagging a violation, when to switch into Sara's persona voice versus general UI copy, and &mdash; critically &mdash; to track consistency <em>across</em> files, not just within a single screen.</p>
+    <h2>Creating the Assistant</h2>
+    <p>To create the Claude project, I wrote project instructions and added the style guide and an existing list of before/after error messages I'd crafted as context.</p>
+    <p>After iteration, one of the most vital instructions I gave was how to track consistency and meaning <em>across</em> screens, instead of just per string. This helped add the value a human content designer provides that's more difficult to get from machines.</p>
 
     <div class="instructions-card">
       <div class="instructions-label">Project Instructions</div>
@@ -122,7 +124,7 @@
   </section>
 
   <section>
-    <h2>Seeing It Work: A Quick Fix</h2>
+    <h2>Testing the Assistant: An Error Message</h2>
     <p>A teammate pasted a screenshot of an existing password error message and asked for a rewrite. The assistant didn't just reword it &mdash; it flagged why the current version violated the guide, cross-referenced an existing error-message pattern library to keep the fix consistent with other errors already shipped, and offered a second, slightly more explicit alternative.</p>
 
     <div class="screenshot-frame is-narrow lightbox-trigger">
@@ -148,7 +150,7 @@
   </section>
 
   <section>
-    <h2>Seeing It Work: A Full Screen Audit</h2>
+    <h2>Testing the Assistant: A Full Figma Flow</h2>
     <p>To stress-test the assistant on something bigger than a single string, I built Careflow &mdash; a mockup care-gap workflow tool &mdash; deliberately seeded with the kinds of copy issues that creep into real products: title-case headings, vague buttons, missing field labels, generic error text. I dropped all four screens into the assistant with a single prompt: "here you go." It thought for 40 seconds and returned a full audit, screen by screen, plus a cross-screen consistency section catching patterns no single-screen review would surface.</p>
 
     <div class="screenshot-frame lightbox-trigger">
@@ -256,6 +258,7 @@
       <div class="outcome-item"><p><strong>Minutes, not a queue.</strong> A full four-screen audit that would otherwise wait on content design's availability came back in under a minute, catching both single-screen and cross-screen issues.</p></div>
       <div class="outcome-item"><p><strong>Consistency at scale.</strong> Cross-file pattern-matching (inconsistent CTA verbs, mismatched terminology) catches issues a single-screen review would miss entirely.</p></div>
       <div class="outcome-item"><p><strong>Handoff-ready by default.</strong> The assistant can turn its own audit into a clean before/after reference doc, ready to hand to a design team without extra formatting work.</p></div>
+      <div class="outcome-item"><p><strong>Solved a visibility problem, too.</strong> As one of the only remote employees on a design team split between India and San Francisco with no standing team meeting, a lot of designers didn't know I existed. Building a tool product managers, designers, and engineers used directly put my work &mdash; and me &mdash; in front of people I'd otherwise never have crossed paths with.</p></div>
     </div>
   </section>
 
