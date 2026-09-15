@@ -124,7 +124,7 @@
   </section>
 
   <section>
-    <h2>Testing the Assistant: An Error Message</h2>
+    <h2>The Assistant in Action: An Error Message</h2>
     <p>A teammate pasted a screenshot of an existing password error message and asked for a rewrite. The assistant didn't just reword it &mdash; it flagged why the current version violated the guide, cross-referenced an existing error-message pattern library to keep the fix consistent with other errors already shipped, and offered a second, slightly more explicit alternative.</p>
 
     <div class="screenshot-frame is-narrow lightbox-trigger">
@@ -132,8 +132,9 @@
     </div>
 
     <div class="chat-transcript" style="margin-top: 20px;">
-      <p class="chat-title">Prompt: [pasted screenshot above] &mdash; "rewrite this"</p>
+      <p class="chat-title">My input: [pasted screenshot above] &mdash; "rewrite this"</p>
       <div class="instructions-card" style="margin: 0;">
+        <div class="instructions-label">Assistant Output</div>
         <h4>Issues vs. style guide</h4>
         <ul>
           <li>"You've got" &mdash; contraction reads casual/colloquial; guide favors plain, direct phrasing over idiom-adjacent language.</li>
@@ -150,8 +151,13 @@
   </section>
 
   <section>
-    <h2>Testing the Assistant: A Full Figma Flow</h2>
-    <p>To stress-test the assistant on something bigger than a single string, I built Careflow &mdash; a mockup care-gap workflow tool &mdash; deliberately seeded with the kinds of copy issues that creep into real products: title-case headings, vague buttons, missing field labels, generic error text. I dropped all four screens into the assistant with a single prompt: "here you go." It thought for 40 seconds and returned a full audit, screen by screen, plus a cross-screen consistency section catching patterns no single-screen review would surface.</p>
+    <h2>The Assistant in Action: A Full Figma Flow</h2>
+    <p>To stress-test the assistant on something bigger than a single string, I ran it against a real, in-progress Innovaccer care-gap workflow tool with the kinds of copy issues that creep into real products: title-case headings, vague buttons, missing field labels, generic error text. I dropped all four screens into the assistant with a single prompt: "here you go." It thought for 40 seconds and returned a full audit, screen by screen, plus a cross-screen consistency section catching patterns no single-screen review would surface.</p>
+
+    <div class="callout-box">
+      <div class="label">A note on these screens</div>
+      <p>I no longer have access to the original Innovaccer files after leaving the company, so the screens shown below (Careflow) are a recreation I built afterward &mdash; seeded with the same kinds of copy issues &mdash; to demonstrate the same test.</p>
+    </div>
 
     <div class="screenshot-frame lightbox-trigger">
       <img src="../assets/ux-writing-assistant/chat-audit-request.png" alt="Chat message showing all four Careflow screens attached with the prompt 'here you go,' and the assistant's response beginning 'Here's the full audit across all four screens, organized by screen with cross-screen issues at the end.'">
