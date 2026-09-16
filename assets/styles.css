@@ -547,6 +547,13 @@ footer .foot-links a:hover { color: var(--rust); }
   max-width: 600px;
 }
 
+.mockup-slot .caption {
+  color: var(--ink-soft);
+  font-size: 13.5px;
+  font-style: italic;
+  margin: 10px 0 0;
+}
+
 .stakeholder-grid {
   display: flex;
   flex-wrap: wrap;
@@ -957,6 +964,11 @@ footer .foot-links a:hover { color: var(--rust); }
 
 @media (max-width: 780px) {
   .mockup-pair { grid-template-columns: 1fr; gap: 48px; }
+}
+
+.mockup-pair.is-stacked {
+  grid-template-columns: 1fr;
+  gap: 32px;
 }
 
 .mockup-slot .mockup-slot-label {
