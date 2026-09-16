@@ -352,9 +352,6 @@
 
   <section class="intro reveal in">
     <p>I was asked to update the copy on the screens that walk a new user through connecting their Apple Health app to Vitality, so they can start getting rewarded for their physical activity.</p>
-    <div class="candor">
-      <strong>A note on this copy:</strong> it's the direction I proposed, alongside the reasoning that got me there.
-    </div>
     <div class="legend">
       <div class="legend-item"><span class="legend-dot o"></span> Friction moments — the user is trying to skip or back out</div>
       <div class="legend-item"><span class="legend-dot t"></span> Confirmation moments — setup is complete</div>
@@ -364,10 +361,9 @@
   <!-- ============ OPTION 1 ============ -->
   <section class="option reveal" id="option-1">
     <div class="option-head">
-      <span class="option-num">Option 01</span>
       <h2>Connect + activate, inside onboarding</h2>
     </div>
-    <p class="option-desc">Health-app connection and challenge activation both happen during onboarding, leaving the surrounding flow as-is. Two moments needed copy: what a user sees if they try to skip or back out of setup — a screen reused across both options — and what they see if their phone's motion permissions are already off.</p>
+    <p class="option-desc">Health-app connection and challenge activation both happen during onboarding, leaving the surrounding flow as-is. Two moments needed copy: what a user sees if they try to skip or back out of setup — a screen reused across both flows &mdash; and what they see if their phone's motion permissions are already off.</p>
 
     <!-- Compare 1: skip / back out -->
     <article class="compare">
@@ -389,12 +385,12 @@
           </div></div>
         </figure>
         <figure class="phone-block after">
-          <span class="phone-tag">Option 2</span>
+          <span class="phone-tag">After</span>
           <div class="device"><div class="screen orange"><div class="notch"></div>
             <div class="statusbar"><span>9:41</span><span class="icons">▲</span></div>
             <div class="screen-body">
               <h4><mark>Connect to Apple Health later?</mark></h4>
-              <p class="body"><mark>If you don't connect Vitality to Health app, you won't be able to get rewarded for your workouts.</mark></p>
+              <p class="body"><mark>If you don't connect Vitality to Health app, you won't get rewarded for your workouts.</mark></p>
               <span class="btn solid">Connect Health app</span>
               <span class="btn">Remind me later</span>
               <span class="btn-link">Don't remind me again</span>
@@ -404,7 +400,7 @@
       </div>
       <div class="analysis">
         <p class="delta"><strong>What changed —</strong> the placeholder gave no real reason to reconsider. The rewrite states one concrete consequence instead of a placeholder, and names each button by what it does — connect now, remind later, or opt out — rather than answering an implied yes/no question.</p>
-        <aside class="note"><span class="label">Content note</span>I don't think we should include the part about being able to change this in "Wellness Devices and Apps" later. Users won't remember it, and they're more likely to actually read the consequence line above if it stands alone.</aside>
+        <aside class="note"><span class="label">A judgment call</span>I considered whether highlighting "Connect Health app" here reads as a deceptive pattern, since the question ("Connect to Apple Health later?") and the primary button don't literally match — the copy asks about deferring, but the emphasized button pushes toward connecting now instead. I kept it as the primary action anyway, since actually connecting is what ultimately helps the member most with their Vitality program.</aside>
       </div>
     </article>
 
@@ -457,10 +453,8 @@
   <!-- ============ OPTION 3 ============ -->
   <section class="option reveal" id="option-3">
     <div class="option-head">
-      <span class="option-num">Option 03</span>
-      <h2>Connect the health app only</h2>
+      <h2>Setup confirmed</h2>
     </div>
-    <p class="option-desc">A narrower flow: onboarding only asks the user to connect Apple Health, and the challenge activates on its own once that's done. The existing product marked the finish line with two slightly different screens.</p>
 
     <!-- Compare 3: confirmation - almost there -->
     <article class="compare">
@@ -491,7 +485,7 @@
               <div class="rings"><div class="inner">📅</div></div>
               <div>
                 <h4><mark>You're all set up!</mark></h4>
-                <p class="body"><mark>You'll receive your first physical activity challenge on&nbsp;<u>&lt;Date&gt;</u>. Earn rewards when you complete Active Challenges.</mark></p>
+                <p class="body"><mark>You'll receive your first physical activity challenge on&nbsp;<strong>&lt;Date&gt;</strong>. Earn rewards when you complete Active Challenges.</mark></p>
               </div>
               <div class="teal-foot"><span class="btn solid">Go home</span></div>
             </div>
@@ -499,9 +493,7 @@
         </figure>
       </div>
       <div class="analysis">
-        <p class="delta"><strong>What changed —</strong> the product actually had two versions of this screen ("almost there" and "all set," worded slightly differently) for what's meant to be the same moment. The rewrite states completion plainly and names the reward mechanic (Active Challenges) instead of only describing what happens on a specific date — so the language stays consistent no matter which state a user lands on.</p>
-        <p class="cta-options">CTA options considered: <span>Go to account · Go home · Done · Continue · OK</span></p>
-        <aside class="note design"><span class="label">Design note</span>Make the date stand out — right now it sits in plain body text with no visual weight, in a line that's otherwise all a user needs to read.</aside>
+        <p class="delta"><strong>What changed —</strong> the rewrite plainly tells the user their setup is complete instead of implying they still have more to do. It explains how you get rewards to encourage user interaction with the app. The date is now bolded so the user is more likely to see it. The CTA explains what happens when the user clicks it.</p>
       </div>
     </article>
   </section>
