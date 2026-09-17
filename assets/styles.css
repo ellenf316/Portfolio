@@ -1317,6 +1317,10 @@ footer .foot-links a:hover { color: var(--rust); }
   .screens-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
+.screens-grid.is-stacked {
+  grid-template-columns: 1fr;
+}
+
 .screens-grid figure {
   margin: 0;
 }
